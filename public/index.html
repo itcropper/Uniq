@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Too Much Right Now</title>
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="libs/font-awesome/css/font-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" >
+    <base href="/">
+</head>
+<body ng-app="Uniq" ng-controller="MainController">
+    <div class="header-wrapper">
+        <div class="">
+            <div class="header-logo">
+                <h1>Uniq</h1>
+            </div>
+            <header>
+                <nav>
+                    <ul>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+    </div>
+    <div class="container">
+        <div ng-view></div>  
+    </div>
+
+    <footer>
+
+    </footer>     
+
+
+
+    <!-- JS -->
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+    
+
+    <!-- ANGULAR CUSTOM -->
+    <script src="scripts/controllers/MainController.js"></script>
+    <script src="scripts/controllers/HomeController.js"></script>
+    <script src="scripts/appRoutes.js"></script>
+    <script src="scripts/app.js"></script>
+    
+    <!-- OTHER STUFF -->
+    <script src="scripts/extensions/upload.js"></script>
+    
+</body>
+</html>
