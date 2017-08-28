@@ -1,60 +1,52 @@
-(function(){
-
-    
-    var listeners = {},
-        file = {
-            name:'',
-            data:null
-        }
-    
-    function change(){
-        for(var l of Object.keys(listeners)){
-            listeners[l]();
+angular.module('HomeCtrl', ['ngFileUpload'])
+.controller('HomeController',['Upload','$window',function(Upload,$window){
+    var vm = this;
+    vm.submit = function(){ //function to call on form submit
+        if (vm.upload_form.file.$valid && vm.file) { //check if from is valid
+            vm.upload(vm.file); //call upload function
         }
     }
-    
-    angular.module('HomeCtrl', []).controller('HomeController', function($scope, $http) {
+    vm.upload = function (file) {
+        Upload.upload({
+            url: './csvupload', //webAPI exposed to upload the file
+            data:{file:file} //pass file as data, should be user ng-model
+        }).then(function (resp) { //upload function returns a promise
+            if(resp.data.error_code === 0){ //validate success
+                console.log("worked");
+            } else {
+                $window.alert('an error occured');
+            }
+        }, function (resp) { //catch error
+            console.log('Error status: ' + resp.status);
+        }, function (evt) { 
+            console.log(evt);
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            vm.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+        });
+    };
+}]);
 
-        $scope.fileName = '';
-        
-        $scope.uploadFile = function(files) {
-            var fd = new FormData();
-            fd.append("file", $scope.thefile);            
-            
-            $http.post('./csvUpload',fd, {
-                headers: {
-                  'Content-Type': 'undefined',
-                  'Encryption-Type': "multipart/form-data"
-                },
-                transformRequest: angular.identity
-            })
-            .then(function(response){
-                console.log(response);
-            });
-        };
-        
 
-    }).directive('dropTarget', function(){
-        return function($scope, $element){
-            $element.on('dragover', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            });
-            $element.on('dragenter', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            });        
+/*
+.directive('dropTarget', function(){
+    return function($scope, $element){
+        $element.on('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        $element.on('dragenter', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });        
 
-            $element.bind('drop', function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                if (e.dataTransfer){
-                    console.log(e.dataTransfer.files[0]);
-                    file.data = e.dataTransfer.files[0];
-                    file.name = e.dataTransfer.files[0].name;
-                    change();
-                }
-            });
-        };
-      });
-})();
+        $element.bind('drop', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.dataTransfer){
+            }
+        });
+    };
+  });
+
+*/
