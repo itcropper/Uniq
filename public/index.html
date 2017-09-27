@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/main.css" >
     <base href="/">
 </head>
-<body ng-app="Uniq" ng-controller="MainController">
+<body>
     <div class="header-wrapper">
         <div class="">
             <div class="header-logo">
@@ -26,7 +26,58 @@
         </div>
     </div>
     <div class="container">
-        <div ng-view></div>  
+        <div class="content">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="zone">
+                      <div id="dropZ">
+                        <i class="fa fa-cloud-upload"></i>
+                        <div>Drag and drop your file here</div>                    
+                        <span>OR</span>
+                        <div class="selectFile">       
+                          <form id="upload-form" method="POST" action="./upload">
+                              <div class="file-input">
+                                <label for="file">Select file</label>                   
+                                <input type="file" name="files[]" id="file" />
+                              </div>
+                                <div class="[ form-group ] prettycheckbox">
+                                    <input type="checkbox" name="exclude" value="true" id="fancy-checkbox-danger" autocomplete="off" />
+                                    <div class="[ btn-group ]">
+                                        <label for="fancy-checkbox-danger" class="[ btn btn-danger ]">
+                                            <span class="[ glyphicon glyphicon-ok ]"></span>
+                                            <span> </span>
+                                        </label>
+                                        <label for="fancy-checkbox-danger" class="[ btn btn-default active ]">
+                                            Exclude entries with count of 1?
+                                        </label>
+                                    </div>
+                                </div>                            
+                            <p class="js-filename"></p>
+                            <br />
+                            <button disabled data-title="select a file first" rel="tooltip" data-placement="top" class="btn submit" type="submit">Submit</button>  
+                          </form>
+                        </div>
+                      </div>
+
+                    </div>
+                    
+                    <div class="response-table hidden">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Word</th>
+                                    <th>Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>  
+        </div>
     </div>
 
     <footer>
@@ -36,18 +87,11 @@
 
 
     <!-- JS -->
-    <script src="libs/angular/angular.js"></script>
-    <script src="libs/angular-route/angular-route.js"></script>
-    
-
-    <!-- ANGULAR CUSTOM -->
+    <script src="libs/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="libs/tablesorter/js/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="libs/tablesorter/js/jquery.tablesorter.widgets.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="scripts/controllers/MainController.js"></script>
-    <script src="scripts/controllers/HomeController.js"></script>
-    <script src="scripts/appRoutes.js"></script>
-    <script src="scripts/app.js"></script>
-    
-    <!-- OTHER STUFF -->
-    <script src="scripts/extensions/upload.js"></script>
     
 </body>
 </html>

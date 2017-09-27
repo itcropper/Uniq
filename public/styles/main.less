@@ -10,6 +10,7 @@ body {
     height:100%;
     background: #ebeff2;
     font-family: "Exo 2";
+    
 }
 
 .container {
@@ -17,23 +18,49 @@ body {
     display: block;
 }
 
+.content {
+    padding-bottom: 50px;
+    padding-bottom: 50px;
+}
+
     
 .zone {      
   margin: auto;
+  padding:10px;
   top: 0; left: 0; bottom: 0; right: 0;
   background: radial-gradient(ellipse at center,#EB6A5A 0,#c9402f 100%);
   width:80%;
-  height:50%;  
-  border:5px dashed white;
   text-align:center;
   color: white;
   z-index: 20;
   transition: all 0.3s ease-out;
   box-shadow: 0 0 0 1px rgba(255,255,255,.05),inset 0 0 .25em 0 rgba(0,0,0,.25);
-  .btnCompression {
-    .btn {
+    
 
-    } 
+    .btn.submit {
+        width:300px;
+        background-color: white;
+        color:#EB6A5A;
+        -webkit-transition: background-color .3s, -webkit-box-shadow .3s, -moz-box-shadow .3s, box-shadow .3s, color .3s;
+        transition: background-color .3s, -webkit-box-shadow .3s, -moz-box-shadow .3s, background-color .3s, box-shadow .3s, color .3s;  
+        outline:0;
+
+        &:hover {
+            background-color:crimson;
+            -webkit-box-shadow: 0px 3px 9px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    0px 3px 9px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         0px 3px 9px 0px rgba(50, 50, 50, 0.75);            
+            color:white;
+        }
+        &:active {
+            -webkit-box-shadow: inset 0px -6px 9px 0px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow:    inset 0px -6px 9px 0px rgba(50, 50, 50, 0.75);
+            box-shadow:         inset 0px -6px 9px 0px rgba(50, 50, 50, 0.75);
+        }
+    }
+    
+    
+  .btnCompression {
     .active {
       background: #EB6A5A;
       color:white;
@@ -46,42 +73,66 @@ body {
     margin-top: 50px;
   }
   .selectFile {
-    height: 50px;
     margin: 20px auto;
     position: relative;
-    width: 200px;          
+    width: 300px;          
   }
 
-  label, input {
-    cursor: pointer;
-    display: block;
-    height: 50px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    border-radius: 5px;          
-  }
+    .file-input {
+      label, input {
+        cursor: pointer;
+        display: block;
+        height: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border-radius: 5px;          
+      }
+      label {
+        background: #fff;
+        color:#EB6A5A;
+        display: inline-block;
+        font-size: 1.2em;
+        line-height: 50px;
+        padding: 0;
+        text-align: center;
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-weight: 400;   
+        box-shadow: 0 1px 1px gray;
+      }        
+    }
 
-  label {
-    background: #fff;
-    color:#EB6A5A;
-    display: inline-block;
-    font-size: 1.2em;
-    line-height: 50px;
-    padding: 0;
-    text-align: center;
-    white-space: nowrap;
-    text-transform: uppercase;
-    font-weight: 400;   
-    box-shadow: 0 1px 1px gray;
-  }
+
 
   input[type=file] {
     opacity: 0;
   }
 
 }
+
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;   
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;   
+}
+
 .zone.in {
   color:white;
   border-color:white;
@@ -98,7 +149,6 @@ body {
   color:gray;
   border-color:white;
   background:#fff;
-  border:5px dashed gray;
   i {          
     color:#EB6A5A;
   }
@@ -114,7 +164,7 @@ body {
 
     
 footer {
-    position: relative;
+    position: fixed;
     bottom:0px;
     width:100%;
     padding-bottom:2%;
