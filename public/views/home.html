@@ -1,0 +1,72 @@
+
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <form  ng-controller="HomeController as up" name="up.upload_form">
+                    Single Image with validations
+                <input 
+                   type="file" 
+                   ngf-select 
+                   ng-model="up.file" 
+                   name="file"  
+                   ngf-max-size="20MB" 
+                   />
+                Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+                <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+                <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+                {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+                <button type="submit" ng-click="up.submit()">submit</button>
+                <p>{{up.progress}}
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="content">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="zone">
+
+              <div id="dropZ">
+                <i class="fa fa-cloud-upload"></i>
+                <div>Drag and drop your file here</div>                    
+                <span>OR</span>
+                    <form  ng-controller="MyCtrl as up" name="up.upload_form">
+                            Single Image with validations
+                        <input 
+                           type="file" 
+                           ngf-select 
+                           ng-model="up.file" 
+                           name="file" 
+                           ngf-pattern="'image/*'"
+                           accept="image/*" 
+                           ngf-max-size="20MB" 
+                           />
+                        Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+                        <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+                        <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+                        {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+                        <button type="submit" ng-click="up.submit()">submit</button>
+                        <p>{{up.progress}}
+                    </form>
+                <div ng-style="{'visibility': fileName?'visible':'hidden'}">
+                    <p ng-bind="fileName"></p>
+                </div>
+                <div ng-style="{'visibility': fileName?'hidden':'visible'}">
+                    <p>File size limit : 10 MB</p>
+                </div>                  
+                
+              </div>
+            </div>
+            <br />
+            <div class="row">
+                <button class="btn btn-warning col-md-2 col-md-offset-5" ng-click="uploadFile(thefile)">Submit</button>
+            </div>            
+        
+    </div>
+    
+</div>           
+
+-->

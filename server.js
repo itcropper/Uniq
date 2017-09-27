@@ -9,6 +9,7 @@ var express = require('express'),
     formidable = require('formidable')
     fileWorker = require("./csvparser");
 
+
 var app = express();
 var PORT = process.env.PORT || 8000;
 
@@ -23,11 +24,6 @@ var http = require('http').createServer(app);
 app.get('/', function(req, res){
     req.send('./public/views/index.html');
 });
-
-//app.post('/csvUpload', function(req, res){
-//    console.log(req.files, "---");
-//    res.send('success');
-//});
 
 app.post('/upload',(req, res, next) => {
     
